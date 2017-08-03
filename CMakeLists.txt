@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.2.2)
 project(leatherman VERSION 1.0.0)
 
+if (WIN32)
+        set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--nxcompat -Wl,--dynamicbase")
+endif()
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${PROJECT_BINARY_DIR}/cmake")
 # Populate locale install location
 configure_file(cmake/leatherman.cmake.in "${PROJECT_BINARY_DIR}/cmake/leatherman.cmake" @ONLY)
